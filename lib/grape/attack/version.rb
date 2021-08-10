@@ -1,5 +1,5 @@
 module Grape
   module Attack
-    VERSION = '0.3.5'
+    VERSION = '0.3.2'
   end
 end
