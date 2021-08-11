@@ -1,7 +1,6 @@
 module Grape
   module Attack
     class Counter
-
       attr_reader :request, :adapter
 
       def initialize(request, adapter)
@@ -28,14 +27,13 @@ module Grape
       private
 
       def key
-        return "#{request.client_identifier}" if request.throttle_options.global_throttling
-        "#{request.method}:#{request.path}:#{request.client_identifier}"
+        return "#{request.method}:#{request.path}:#{request.client_identifier}" if request.throttle_options.throttle_endpoint_individually?
+        "#{request.client_identifier}"
       end
 
       def ttl_in_seconds
         request.throttle_options.per.to_i
       end
-
     end
   end
 end

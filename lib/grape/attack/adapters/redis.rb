@@ -1,10 +1,9 @@
-require 'redis-namespace'
+require "redis-namespace"
 
 module Grape
   module Attack
     module Adapters
       class Redis
-
         attr_reader :broker
 
         def initialize
@@ -47,14 +46,13 @@ module Grape
           elsif defined?(RACK_ENV)
             RACK_ENV
           else
-            ENV['RACK_ENV']
+            ENV["RACK_ENV"]
           end
         end
 
         def url
-          ENV['REDIS_URL'] || 'redis://localhost:6379/0'
+          ENV["REDIS_URL"] || "redis://localhost:6379/0"
         end
-
       end
     end
   end

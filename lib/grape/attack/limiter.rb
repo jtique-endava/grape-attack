@@ -1,10 +1,9 @@
-require 'grape/attack/request'
-require 'grape/attack/counter'
+require "grape/attack/request"
+require "grape/attack/counter"
 
 module Grape
   module Attack
     class Limiter
-
       attr_reader :request, :adapter, :counter
 
       def initialize(env, adapter = ::Grape::Attack.config.adapter)
@@ -48,7 +47,7 @@ module Grape
       end
 
       def max_requests_allowed
-        request.throttle_options.max.to_i
+        request.throttle_options.limit.to_i
       end
 
     end

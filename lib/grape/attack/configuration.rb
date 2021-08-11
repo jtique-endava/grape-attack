@@ -1,17 +1,14 @@
 module Grape
   module Attack
     class Configuration
-
-      attr_accessor :adapter, :disable, :global_throttling, :global_throttling_max, :global_throttling_per
+      attr_accessor :adapter, :disable, :throttle_limit, :throttle_interval
 
       def initialize
-        @adapter = ::Grape::Attack::Adapters::Redis.new
-        @disable = Proc.new { false }
-        @global_throttling = false
-        @global_throttling_max = 600
-        @global_throttling_per = 1.hour
+        @adapter           = ::Grape::Attack::Adapters::Redis.new
+        @disable           = Proc.new { false }
+        @throttle_limit    = 600
+        @throttle_interval = 1.hour
       end
-
     end
   end
 end

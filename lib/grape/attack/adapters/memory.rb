@@ -2,7 +2,6 @@ module Grape
   module Attack
     module Adapters
       class Memory
-
         attr_reader :data
 
         def initialize
@@ -24,7 +23,6 @@ module Grape
         def atomically(&block)
           block.call
         end
-
       end
     end
   end

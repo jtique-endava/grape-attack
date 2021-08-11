@@ -1,17 +1,17 @@
 # coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'grape/attack/version'
+require "grape/attack/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "grape-attack"
+  spec.name          = "grape-attack-global"
   spec.version       = Grape::Attack::VERSION
-  spec.authors       = ["Pierre-Louis Gottfrois"]
-  spec.email         = ["pierrelouis.gottfrois@gmail.com"]
+  spec.authors       = ["Nick Schneble"]
+  spec.email         = ["nschneble@users.noreply.github.com "]
 
-  spec.summary       = %q{A middleware for Grape to add endpoint-specific throttling.}
-  spec.description   = %q{A middleware for Grape to add endpoint-specific throttling.}
-  spec.homepage      = ""
+  spec.summary       = %q{Grape middleware for global throttling.}
+  spec.description   = %q{A forked version of the Grape::Attack middleware focused on global throttling.}
+  spec.homepage      = "https://github.com/nschneble/grape-attack"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
