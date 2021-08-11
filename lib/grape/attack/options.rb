@@ -17,12 +17,12 @@ module Grape
         end
       end
 
-      validates :limit, numericality: { allow_nil: true, only_integer: true, greater_than: 0 }
-      validates :per, numericality: { allow_nil: true, only_integer: true, greater_than: 0 }
+      validates :limit, numericality: { only_integer: true, greater_than: 0 }
+      validates :per, numericality: { only_integer: true, greater_than: 0 }
       validates :identifier, proc: { allow_nil: true }
 
       def throttle_endpoint_individually?
-        @limit.present? && @per.present?
+        @limit != ::Grape::Attack.config.throttle_limit && @per != ::Grape::Attack.config.throttle_interval
       end
     end
   end
