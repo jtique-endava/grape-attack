@@ -11,18 +11,6 @@ module Grape
       validates :limit, numericality: { allow_nil: true, only_integer: true, greater_than: 0 }
       validates :per, numericality: { allow_nil: true, only_integer: true, greater_than: 0 }
 
-      def limit
-        @limit || ::Grape::Attack.config.throttle_limit
-      end
-
-      def per
-        @per || ::Grape::Attack.config.throttle_interval
-      end
-
-      def identifier
-        @identifier || Proc.new {}
-      end
-
       def throttle_endpoint_individually?
         @limit.present? && @per.present?
       end
