@@ -33,7 +33,7 @@ module Grape
       end
 
       def client_identifier
-        self.instance_eval(&throttle_options.identifier) || env["HTTP_X_REAL_IP"] || env["REMOTE_ADDR"]
+        throttle_options.identifier.call || env["HTTP_X_REAL_IP"] || env["REMOTE_ADDR"]
       end
 
       def throttle?
