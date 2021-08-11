@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "grape/attack/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "grape-attack-global"
+  spec.name          = "grape-attack"
   spec.version       = Grape::Attack::VERSION
   spec.authors       = ["Nick Schneble"]
   spec.email         = ["nschneble@users.noreply.github.com "]
