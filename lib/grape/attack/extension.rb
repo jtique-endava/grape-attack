@@ -4,7 +4,6 @@ module Grape
       def throttle(options = {})
         options[:limit] = ::Grape::Attack.config.throttle_limit unless options[:limit].present?
         options[:per] = ::Grape::Attack.config.throttle_interval unless options[:per].present?
-        options[:identifier] = Proc.new {} unless options[:identifier].present?
 
         route_setting(:throttle, options)
         options
