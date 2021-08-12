@@ -24,7 +24,6 @@ module Grape
 
       def remaining
         @remaining || @limit
-        super
       end
     end
   end
