@@ -19,7 +19,7 @@ module Grape
 
       validates :limit, numericality: { only_integer: true, greater_than: 0 }
       validates :per, numericality: { only_integer: true, greater_than: 0 }
-      validates :remaining, numericality: { only_integer: true, greater_than: 0 }
+      validates :remaining, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
       validates :identifier, proc: { allow_nil: true }
 
       def remaining
