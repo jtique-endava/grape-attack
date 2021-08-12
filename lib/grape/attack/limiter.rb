@@ -20,7 +20,7 @@ module Grape
           update_counter
           set_rate_limit_headers
         else
-          fail ::Grape::Attack::RateLimitExceededError.new("API rate limit exceeded for #{request.client_identifier}.")
+          fail ::Grape::Attack::RateLimitError.new("API rate limit exceeded for #{request.client_identifier}.")
         end
       end
 

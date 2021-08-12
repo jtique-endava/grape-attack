@@ -1,10 +1,8 @@
 # Grape::Attack <sup>*forked central edition*</sup>
 
-A forked version of the [Grape::Attack](https://github.com/gottfrois/grape-attack) middleware focused on global throttling.
+A forked version of the [Grape::Attack](https://github.com/gottfrois/grape-attack) middleware focused exclusively on global throttling.
 
-If you're feeling saucy, you can still override the global defaults with endpoint-specific throttling.
-
-## Why Do This?
+## Why Fork This?
 
 It's [Rack::Attack](https://github.com/kickstarter/rack-attack) for [Grape](https://github.com/ruby-grape/grape). That's great! But there was a need for global throttling as the default. Like its ancestor, this fork is meant to be dead simple with minimal configuration.
 
@@ -62,20 +60,7 @@ class MyApi < Grape::API
 end
 ```
 
-You can override the global defaults for individual endpoints:
-
-```ruby
-class MyApi < Grape::API
-  use Grape::Attack::Throttle
-
-  resources :contacts do
-    throttle limit: 10, per: 1.minute
-    get do
-      Contact.all
-    end
-  end
-end
-```
+That's it!
 
 ## More Information
 

@@ -27,8 +27,7 @@ module Grape
       private
 
       def key
-        return "#{request.method}:#{request.path}:#{request.client_identifier}" if request.throttle_options.throttle_endpoint_individually?
-        "#{request.client_identifier}"
+        request.client_identifier
       end
 
       def ttl_in_seconds

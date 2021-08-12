@@ -1,15 +1,14 @@
 module Grape
   module Attack
     module Extension
-      def throttle(options = {})
-        options[:limit] = ::Grape::Attack.config.throttle_limit unless options[:limit].present?
-        options[:per] = ::Grape::Attack.config.throttle_interval unless options[:per].present?
-
-        route_setting(:throttle, options)
-        options
+      def throttle
+        route_setting(:throttle, {
+          limit: ::Grape::Attack.config.throttle_limit,
+          per:   ::Grape::Attack.config.throttle_interval
+        })
       end
 
-      # Grape::API::Instance is defined in grape 1.2.0 or above
+      # Grape::API::Instance is defined in Grape >= 1.2.0
       grape_api = defined?(::Grape::API::Instance) ? ::Grape::API::Instance : ::Grape::API
       grape_api.extend self
     end

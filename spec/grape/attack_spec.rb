@@ -5,6 +5,7 @@ describe Grape::Attack do
     expect(Grape::Attack::VERSION).not_to be nil
   end
 
+  # this should probably be replaced with some actual tests that actually test things
   it "does something useful" do
     expect(false).to eq(true)
   end

@@ -6,7 +6,7 @@ module Grape
       include ActiveModel::Model
       include ActiveModel::Validations
 
-      attr_accessor :limit, :per, :identifier, :remaining
+      attr_accessor :limit, :per, :remaining, :identifier
 
       class ProcValidator < ActiveModel::EachValidator
         def validate_each(record, attribute, value)
@@ -19,10 +19,12 @@ module Grape
 
       validates :limit, numericality: { only_integer: true, greater_than: 0 }
       validates :per, numericality: { only_integer: true, greater_than: 0 }
+      validates :remaining, numericality: { only_integer: true, greater_than: 0 }
       validates :identifier, proc: { allow_nil: true }
 
-      def throttle_endpoint_individually?
-        @limit != ::Grape::Attack.config.throttle_limit && @per != ::Grape::Attack.config.throttle_interval
+      def remaining
+        @remaining || @limit
+        super
       end
     end
   end

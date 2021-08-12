@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["nschneble@users.noreply.github.com "]
 
   spec.summary       = %q{Grape middleware for global throttling.}
-  spec.description   = %q{A forked version of the Grape::Attack middleware focused on global throttling.}
+  spec.description   = %q{A forked version of the Grape::Attack middleware focused exclusively on global throttling.}
   spec.homepage      = "https://github.com/nschneble/grape-attack"
   spec.license       = "MIT"
 
