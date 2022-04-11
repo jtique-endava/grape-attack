@@ -17,9 +17,9 @@ module Grape
       end
 
       def update
-        adapter.atomically do
-          adapter.incr(key)
-          adapter.expire(key, ttl_in_seconds)
+        adapter.atomically do |instance|
+          instance.incr(key)
+          instance.expire(key, ttl_in_seconds)
         end
       rescue ::Grape::Attack::StoreError
       end

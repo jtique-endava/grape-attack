@@ -6,8 +6,8 @@ module Grape
       class Redis
         attr_reader :broker
 
-        def initialize
-          @broker = ::Redis::Namespace.new("grape-attack:#{env}:thottle", redis: ::Redis.new(url: url))
+        def initialize(broker: ::Redis::Namespace.new("grape-attack:#{env}:thottle", redis: ::Redis.new(url: url)))
+          @broker = broker
         end
 
         def get(key)
@@ -29,7 +29,9 @@ module Grape
         end
 
         def atomically(&block)
-          broker.multi(&block)
+          broker.multi do |instance|
+            block.call(self.class.new(broker: instance))
+          end
         end
 
         private

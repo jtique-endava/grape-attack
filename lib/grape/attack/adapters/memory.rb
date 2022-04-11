@@ -21,7 +21,7 @@ module Grape
         end
 
         def atomically(&block)
-          block.call
+          block.call(self)
         end
       end
     end
