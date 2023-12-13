@@ -3,9 +3,9 @@ module Grape
     module Extension
       def throttle
         route_setting(:throttle, {
-          limit: ::Grape::Attack.config.throttle_limit,
-          per:   ::Grape::Attack.config.throttle_interval
-        })
+                        limit: ::Grape::Attack.config.throttle_limit,
+                        per: ::Grape::Attack.config.throttle_interval
+                      })
       end
 
       # Grape::API::Instance is defined in Grape >= 1.2.0
